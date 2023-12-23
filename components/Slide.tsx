@@ -14,7 +14,7 @@ type PropsTypes = {
 export default function Slide(props: PropsTypes) {
   return (
     <div className={`flex flex-col gap-4  my-3    ${props.className}`}>
-      {props.title && <p className="font-semibold text-lg text-center sm:text-left"> {props.title} </p>}
+      {props.title && <p className="font-semibold text-lg "> {props.title} </p>}
 
       <div className="">
         {props.slidetype === "portrait" && (
@@ -23,8 +23,9 @@ export default function Slide(props: PropsTypes) {
               modules={[Navigation, Scrollbar, A11y]}
               className=""
               breakpoints={{
-                429: {
+                0: {
                   slidesPerView: 2,
+                  spaceBetween: 4,
                 },
                 692: {
                   slidesPerView: 3,
@@ -115,7 +116,6 @@ export default function Slide(props: PropsTypes) {
                 slidesPerView: 2,
                 spaceBetween: 7,
               },
-
             }}
           >
             {props.children}
