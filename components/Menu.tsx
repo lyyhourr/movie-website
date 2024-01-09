@@ -12,9 +12,9 @@ export default function Menu() {
     [key: string]: string | number;
   }
   const MenuRoutes = (title: string, routes: Routes[], page: string) => (
-    <div className="border-b border-gray-600 lg:pb-5 lg:mb-5 pb-2 mb-1">
+    <div className="border-b border-gray-600 py-2 my-1">
       <p className="text-red-600 font-semibold text-lg md:text-2xl ">{title}</p>
-      <div className="grid grid-cols-2 gap-3 lg:gap-4 items-center justify-center mt-2">
+      <div className="grid grid-cols-2 gap-2 items-center justify-center mt-2">
         {routes.map((item, i) => (
           <Link
             key={i}
@@ -31,11 +31,10 @@ export default function Menu() {
 
   return (
     <nav
-      className={`w-[330px]  fixed h-screen bg-[#212121]  duration-500 rounded-tl-xl ${
-        showMenu ? "right-0 z-50" : "-right-full z-[-1]"
-      }`}
+      className={`w-[330px]  fixed h-screen bg-[#212121]  duration-500 rounded-tl-xl ${showMenu ? "right-0 z-50" : "-right-full z-[-1]"
+        }`}
     >
-      <div className="p-2 ">
+      <div className="p-2 flex flex-col gap-4 ">
         <div
           className="bg-white hover:bg-red-500 hover:text-white hover:scale-105 cursor-pointer transition-all text-black rounded-3xl p-2 w-fit ml-auto flex gap-1 items-center"
           onClick={() => setShowMenu(false)}
@@ -43,7 +42,7 @@ export default function Menu() {
           <p className="text-sm">Close</p>
           <IoMdCloseCircle className="w-[20px] h-[20px]" />
         </div>
-        <div className="border-b border-gray-600 pb-3 mb-2 text-center">
+        <div className="border-b border-gray-600  text-center">
           <Link
             href={`/`}
             className=" text-red-600 font-semibold text-2xl hover:underline duration-500 "
