@@ -33,7 +33,7 @@ export default function Footer() {
             @2023
           </p>
           <p className="text-gray-400 ml-3  font-bold hover:text-white duration-500  cursor-pointer"> Mam lyhua </p>
-          <p className="group-hover:block text-sm  lg:hidden">( Junior Frontend Dev )</p>
+          <p className="group-hover:block text-sm  lg:hidden">(3th Year Student)</p>
         </div>
 
         <div className="flex items-center justify-center gap-5 my-5 lg:my-0">
