@@ -1,5 +1,7 @@
 Hello ! I'm a third year student and this a my first web project !
 </br>
+I'm new and still making alot of mistakes!!
+</br>
 Visit this project on https://pophorn.vercel.app/
 </br>
 
