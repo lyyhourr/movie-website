@@ -9,6 +9,7 @@ import { HeroType, MovieType } from "@/types/type";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Loader2 } from "lucide-react";
 
 const Genres = (genre: number[]) => (
   <p className="txt-sm text-gray-600 text-center">
@@ -55,7 +56,7 @@ export const LandscapeSlideLayout = (
                   }
                   width={10000000}
                   height={10000000}
-                  className="bg-transparent w-full h-[150px] lg:w-[3000px] lg:h-[200px] rounded-2xl object-fill "
+                  className="bg-transparent w-[90%] sm:w-full h-[150px] lg:w-[3000px] lg:h-[200px] rounded-2xl object-cover "
                   alt={`slide image`}
                 />
                 <div>
@@ -183,8 +184,9 @@ export const HeroLayout = (hero: HeroType[]) => (
 );
 
 export const LoadingText = () => (
-  <div className="animate-pulse h-screen w-screen">
-    <p className="text-3xl text-center content-center">Loading Screen...</p>
+  <div className="flex items-center gap-2 h-screen w-screen justify-center">
+    <Loader2 className="animate-spin text-white w-8 h-8" />
+    <p className="text-2xl text-center content-center">Loading...</p>
   </div>
 );
 
@@ -225,9 +227,8 @@ export const MenuMoviesLayout = (
           </div>
           <div className="w-full flex items-center justify-center gap-2 my-3">
             <button
-              className={`bg-gray-700 hover:bg-gray-500 duration-500 hover:scale-105 rounded-full p-[3px] ${
-                page === 1 && "opacity-30 hover:cursor-not-allowed"
-              }`}
+              className={`bg-gray-700 hover:bg-gray-500 duration-500 hover:scale-105 rounded-full p-[3px] ${page === 1 && "opacity-30 hover:cursor-not-allowed"
+                }`}
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
             >

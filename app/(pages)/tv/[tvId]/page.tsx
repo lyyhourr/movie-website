@@ -80,7 +80,7 @@ export default function MoviePage({ params }: { params: { tvId: string } }) {
                 <p className='  sm:text-xl sm:font-bold'>Companies:</p>
                 <div className="flex items-center justify-center gap-5">
                     {
-                        movie?.production_companies?.map((item, i) => (
+                        movie?.production_companies?.map((item, i) => item.logo_path && (
                             <div key={i} className='relative' >
                                 <Image
                                     src={item?.logo_path ? `https://image.tmdb.org/t/p/w500/${item.logo_path}` : "/blank.png"}

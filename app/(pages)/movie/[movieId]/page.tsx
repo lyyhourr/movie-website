@@ -4,6 +4,7 @@ import { LandscapeSlideLayout, LandscapeSlideWithNumberLayout, PortraitSlideLayo
 import { api_key } from '@/constants/constants';
 import { FetchMovie } from '@/lib/Fetch';
 import { MovieType } from '@/types/type';
+import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -46,7 +47,11 @@ export default function MoviePage({ params }: { params: { movieId: string } }) {
                         className={`${playingVdo && "animate-pulse"} w-full lg:h-[500px] xl:h-[625px] xl:w-[110%] mx-auto  rounded-lg`}
                     />
                     {
-                        playingVdo && <p className={` ${playingVdo && "animate-pulse"} absolute text-lg  text-black left-[40%] top-[40%] lg:left-[45%]`}>Loading Video...</p>
+                        // playingVdo && <p className={` ${playingVdo && "animate-pulse"} absolute text-lg  text-black left-[40%] top-[40%] lg:left-[45%]`}>Loading Video...</p>
+                        playingVdo && <p className={` ${playingVdo && "animate-pulse"} absolute text-lg flex justify-center items-center gap-2 text-black left-[40%] top-[40%] `}>
+                            <Loader2 className='text-bue-500 animate-spin' />
+                            Loading...
+                        </p>
                     }
                     {
                         !playingVdo && (
@@ -62,9 +67,9 @@ export default function MoviePage({ params }: { params: { movieId: string } }) {
                     }
                     {!movie?.backdrop_path && (<p className={` animate-pulse absolute text-lg  text-black left-[40%] top-[40%] lg:left-[45%]`}>Loading ...</p>)}
                 </div>
-                <div className=' flex flex-col gap-4 text-lg lg:gap-10 lg:text-xl ml-4 xl:ml-0 col-span-2'>
-                    <p className='text-2xl lg:text-5xl text-center font-bold mt-3'>{movie?.title}</p>
-                    <p className='  text-center'>{movie?.tagline}</p>
+                <div className=' flex flex-col gap-4 text-gray-500 lg:gap-10  ml-4 xl:ml-0 col-span-2'>
+                    <p className='text-2xl lg:text-5xl text-center text-white font-bold mt-3'>{movie?.title}</p>
+                    <p className=' text-sm'>{movie?.tagline}</p>
                     <p>Duration : {movie?.runtime} minutes</p>
                     <p className=''>Genres : {movie?.genres?.map((gen, i) => i === 0 ? (<span key={i}> {gen.name}</span>) : (<span key={i}> &#8226; {gen.name}</span>))}</p>
                     <p>Spoken Language : {movie?.spoken_languages?.map((lang) => lang.english_name)}</p>
@@ -75,7 +80,6 @@ export default function MoviePage({ params }: { params: { movieId: string } }) {
                 <div>
                 </div>
             </div>
-            <Link href={movie?.homepage ? movie.homepage : "/"} className='text-lg underline ml-5'>Vist Home Page</Link>
             <p className='ml-4 xl:hidden text-gray-400 text-sm lg:text-xl my-4'>Storyline : {movie?.overview}</p>
 
             <div className='flex items-center justify-evenly  mx-3'>
@@ -83,7 +87,7 @@ export default function MoviePage({ params }: { params: { movieId: string } }) {
                 <div className="flex items-center justify-center gap-5">
 
                     {
-                        movie?.production_companies?.map((item, i) => (
+                        movie?.production_companies?.slice(0, 2).map((item, i) => item.logo_path && (
                             <div key={i} className='relative' >
                                 <Image
                                     src={item?.logo_path ? `https://image.tmdb.org/t/p/w500/${item.logo_path}` : "/blank.png"}
@@ -93,7 +97,7 @@ export default function MoviePage({ params }: { params: { movieId: string } }) {
                                     className={`${!item?.logo_path && "animate-pulse"} w-[100px] h-[50px] sm:w-[150px] sm:h-[100px] p-[5px] rounded-lg  z-100 bg-white text-black`}
                                 />
                                 {
-                                    !item?.logo_path && <p className={`  animate-pulse absolute text-sm  text-black left-3 top-1 md:top-7 `}>Loading Image...</p>
+                                    !item?.logo_path && <p className={` absolute text-sm  text-black left-3 top-1 md:top-7 `}>No Image...</p>
                                 }
                             </div>))
                     }
